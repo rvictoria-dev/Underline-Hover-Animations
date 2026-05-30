@@ -1,0 +1,144 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 3rem;
+  padding: 3rem 2rem;
+  background: #f5f4f0;
+  font-family: sans-serif;
+}
+
+/* Left to right — Line grows left to right */
+
+.link {
+  position: relative;
+  text-decoration: none;
+  font-size: 18px;
+  color: #1a1a1a;
+  display: inline-block;
+}
+
+.link-lr::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #534ab7;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+.link-lr:hover::after {
+  transform: scaleX(1);
+}
+
+/* Center out — Line grows from the center to both sides */
+
+.link-center::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #0f6e56;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+.link-center:hover::after {
+  transform: scaleX(1);
+}
+
+/* Right to left — Line grows from right to left */
+
+.link-rl::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #993c1d;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+.link-rl:hover::after {
+  transform: scaleX(1);
+}
+
+/*Highlight fill — ::after becomes a background behind the text */
+
+.link-fill {
+  z-index: 0;
+}
+.link-fill::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -4px;
+  width: calc(100% + 8px);
+  height: 40%;
+  background: #cecbf6;
+  z-index: -1;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+.link-fill:hover::after {
+  transform: scaleX(1);
+}
+
+/* Slide up — Line slides up and fades in at the same time */
+.link-up::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #185fa5;
+  transform: scaleX(0) translateY(4px);
+  transform-origin: left;
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s;
+}
+.link-up:hover::after {
+  transform: scaleX(1) translateY(0);
+  opacity: 1;
+}
+
+/* Color swap — Text color changes and underline appears */
+.link-swap {
+  color: #888;
+  transition: color 0.25s;
+}
+.link-swap::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background: #854f0b;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+.link-swap:hover {
+  color: #1a1a1a;
+}
+.link-swap:hover::after {
+  transform: scaleX(1);
+}
